@@ -1,4 +1,4 @@
-export default function fetchPhotos(searchPrase, page) {
+export default function fetchPhotos(searchPrase = "cats", page = 1) {
   const searchParams = new URLSearchParams({
     client_id: "BUqEmomTG7T1vLBnVUi4F4sAZAHb-r9RCsxNJ7SWWvI",
     auto: "format",
@@ -7,7 +7,7 @@ export default function fetchPhotos(searchPrase, page) {
     query: searchPrase,
   });
 
-  return fetch(`https://api.unsplash.com/photos${searchParams}`, {
+  return fetch(`https://api.unsplash.com/photos?${searchParams}`, {
     headers: {
       "Accept-Version": "v1",
     },

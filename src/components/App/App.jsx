@@ -5,16 +5,12 @@ import "./App.css";
 import testData from "../../assets/testData.json";
 
 function App() {
-  // const [photos, setPhotos] = useState(0);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(event.target.elements.search.value);
-  }
+  const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div>
-      <SearchBar handleSubmit={handleSubmit} />
+      <SearchBar setsState={[setPhotos, setLoading]} />
       <ImageGallery imageArray={testData} />
     </div>
   );
