@@ -1,18 +1,21 @@
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import ImageGallary from "../ImageGallary/ImageGallary";
+import ImageGallery from "../ImageGallery/ImageGallery";
 import "./App.css";
 import testData from "../../assets/testData.json";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [photos, setPhotos] = useState(0);
 
-  console.log(testData);
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(event.target.elements.search.value);
+  }
 
   return (
     <div>
-      <SearchBar />
-      <ImageGallary imageArray={testData} />
+      <SearchBar handleSubmit={handleSubmit} />
+      <ImageGallery imageArray={testData} />
     </div>
   );
 }
