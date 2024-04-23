@@ -12,9 +12,11 @@ export default function SearchBar({ setsState: [setPhotos, setLoading] }) {
     }
     try {
       setLoading(true);
+      setPhotos([]);
       const fetch = await fetchPhotos(searchPrase);
       const photosArray = await responseCheck(fetch);
-      // promis.map(({id})=>console.log(id))
+      // console.log(photosArray)
+      // console.log(fetch)
       setPhotos(photosArray);
     } catch (error) {
       alert(error);
