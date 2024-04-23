@@ -15,9 +15,10 @@ export default function SearchBar({ setsState: [setPhotos, setLoading] }) {
       setPhotos([]);
       const fetch = await fetchPhotos(searchPrase);
       const photosArray = await responseCheck(fetch);
-      // console.log(photosArray)
-      // console.log(fetch)
-      setPhotos(photosArray);
+      console.log(photosArray);
+      const { total, total_pages, results } = photosArray;
+      // console.log(results)
+      setPhotos(results);
     } catch (error) {
       alert(error);
     } finally {

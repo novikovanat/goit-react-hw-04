@@ -7,7 +7,7 @@ export default function fetchPhotos(searchPrase, page = 1) {
     query: searchPrase,
   });
 
-  return fetch(`https://api.unsplash.com/photos?${searchParams}`, {
+  return fetch(`https://api.unsplash.com/search/photos?${searchParams}`, {
     headers: {
       "Accept-Version": "v1",
     },
