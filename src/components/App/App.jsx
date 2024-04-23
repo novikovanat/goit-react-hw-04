@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <SearchBar setsState={[setPhotos, setLoading]} />
-      <ImageGallery imageArray={testData} />
+      <ImageGallery photosArray={photos} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export default function fetchPhotos(searchPrase = "cats", page = 1) {
+export default function fetchPhotos(searchPrase, page = 1) {
   const searchParams = new URLSearchParams({
     client_id: "BUqEmomTG7T1vLBnVUi4F4sAZAHb-r9RCsxNJ7SWWvI",
     auto: "format",

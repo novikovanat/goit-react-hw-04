@@ -1,9 +1,12 @@
 import ImageCard from "../ImageCard/ImageCard";
 
-export default function ImageGallery({ imageArray }) {
-  const imageList = imageArray.map(({ src, alt, id }) => (
+export default function ImageGallery({ photosArray }) {
+  console.log(photosArray);
+  const imageList = photosArray.map(({ urls:{small}, alt_description
+    , id }) => (
     <li key={id}>
-      <ImageCard scr={src} alt={alt} />
+      <ImageCard scr={small} alt={alt_description
+} />
     </li>
   ));
   return <ul>{imageList}</ul>;

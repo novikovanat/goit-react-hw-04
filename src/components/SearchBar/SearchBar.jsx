@@ -1,5 +1,6 @@
 // import css from "./SearchBar.module.css";
 import fetchPhotos from "../JS/fetchPhotos";
+import responseCheck from "../JS/checkStatus";
 
 export default function SearchBar({ setsState: [setPhotos, setLoading] }) {
   async function handleSubmit(event) {
@@ -11,7 +12,9 @@ export default function SearchBar({ setsState: [setPhotos, setLoading] }) {
     }
     try {
       setLoading(true);
-      const photosArray = await fetchPhotos(searchPrase);
+      const fetch = await fetchPhotos(searchPrase);
+      const photosArray = await responseCheck(fetch);
+      // promis.map(({id})=>console.log(id))
       setPhotos(photosArray);
     } catch (error) {
       alert(error);
