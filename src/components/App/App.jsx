@@ -5,7 +5,6 @@ import ImageModal from "../ImageModal/ImageModal";
 import "./App.css";
 
 function App() {
-  
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   // const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,11 +27,11 @@ function App() {
       <SearchBar setsState={[setPhotos, setLoading]} />
       <ImageGallery photosArray={photos} />
       <ImageModal
-        // isOpen={modalIsOpen}
-        // onOpen={setModalIsOpen}
-        // onAfterOpen={afterOpenModal}
-        // onRequestClose={closeModal}
-        // contentLabel="Example Modal"
+      // isOpen={modalIsOpen}
+      // onOpen={setModalIsOpen}
+      // onAfterOpen={afterOpenModal}
+      // onRequestClose={closeModal}
+      // contentLabel="Example Modal"
       />
     </div>
   );

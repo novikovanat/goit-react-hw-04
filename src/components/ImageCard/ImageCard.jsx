@@ -1,9 +1,11 @@
-export default function ImageCard({ src, alt, fullSize }) {
+import css from "./ImageCard.module.css";
+export default function ImageCard({ src, alt, isSmall }) {
+  let selectorCss = isSmall ? css.smallImage : css.largeImage;
+
   return (
     <div>
-      <a href={fullSize} onClick={(event) => event.preventDefault}>
-        <img src={src} alt={alt} />
-      </a>
+      <img className={selectorCss} src={src} alt={alt} />
     </div>
   );
 }
+

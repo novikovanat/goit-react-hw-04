@@ -3,7 +3,7 @@ import React from "react";
 import Modal from "react-modal";
 import ImageCard from "../ImageCard/ImageCard";
 
-export default function ImageModal({ src, alt }) {
+export default function ImageModal({ src, alt, fullSize }) {
   Modal.setAppElement("#root");
   const customStyles = {
     content: {
@@ -11,7 +11,7 @@ export default function ImageModal({ src, alt }) {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      marginRight: "-50%",
+      // marginRight: "-50%",
       transform: "translate(-50%, -50%)",
     },
   };
@@ -37,9 +37,9 @@ export default function ImageModal({ src, alt }) {
 
   return (
     <div>
-      <button onClick={openModal}>
-        <ImageCard src={src} alt={alt}/>
-      </button>
+      <div onClick={openModal}>
+        <ImageCard src={src} alt={alt} isSmall={true} />
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -49,7 +49,9 @@ export default function ImageModal({ src, alt }) {
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
         <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
+        <div>
+          <ImageCard src={fullSize} alt={alt} isSmall={false} />
+        </div>
         <form>
           <input />
           <button>tab navigation</button>
