@@ -8,7 +8,7 @@ function App() {
   
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // function openModal() {
   //   setIsOpen(true);
@@ -28,8 +28,8 @@ function App() {
       <SearchBar setsState={[setPhotos, setLoading]} />
       <ImageGallery photosArray={photos} />
       <ImageModal
-        isOpen={modalIsOpen}
-        onOpen={setModalIsOpen}
+        // isOpen={modalIsOpen}
+        // onOpen={setModalIsOpen}
         // onAfterOpen={afterOpenModal}
         // onRequestClose={closeModal}
         // contentLabel="Example Modal"

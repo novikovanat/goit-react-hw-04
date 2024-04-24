@@ -1,10 +1,12 @@
 import ImageCard from "../ImageCard/ImageCard";
+import ImageModal from "../ImageModal/ImageModal";
+
 
 export default function ImageGallery({ photosArray }) {
   const imageList = photosArray.map(
     ({ urls: { small }, alt_description, id }) => (
       <li key={id}>
-        <ImageCard src={small} alt={alt_description} />
+        <ImageModal src={small} alt={alt_description} />
       </li>
     )
   );

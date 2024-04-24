@@ -1,8 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from 'react-dom';
 import Modal from "react-modal";
+import ImageCard from "../ImageCard/ImageCard";
 
-export default function ImageModal({ isOpen, onOpen }) {
+export default function ImageModal({ src, alt }) {
   Modal.setAppElement("#root");
   const customStyles = {
     content: {
@@ -19,10 +20,10 @@ export default function ImageModal({ isOpen, onOpen }) {
   // Modal.setAppElement("#root");
 
   let subtitle;
-  // const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
-    onOpen(true);
+    setIsOpen(true);
   }
 
   function afterOpenModal() {
@@ -31,14 +32,16 @@ export default function ImageModal({ isOpen, onOpen }) {
   }
 
   function closeModal() {
-    onOpen(false);
+    setIsOpen(false);
   }
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>
+        <ImageCard src={src} alt={alt}/>
+      </button>
       <Modal
-        isOpen={isOpen}
+        isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
