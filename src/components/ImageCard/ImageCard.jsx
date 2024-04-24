@@ -1,7 +1,9 @@
-export default function ImageCard({ src, alt }) {
+export default function ImageCard({ src, alt, fullSize }) {
   return (
     <div>
-      <img src={src} alt={alt} />
+      <a href={fullSize} onClick={(event) => event.preventDefault}>
+        <img src={src} alt={alt} />
+      </a>
     </div>
   );
 }
