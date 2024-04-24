@@ -3,11 +3,13 @@ import { Hearts } from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./App.css";
 
 function App() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // function openModal() {
@@ -23,10 +25,16 @@ function App() {
   //   setIsOpen(false);
   // }
 
+  const isError = error !== "";
+
   return (
     <div>
-      <SearchBar setsState={[setPhotos, setLoading]} />
-      <ImageGallery photosArray={photos} />
+      <SearchBar setsState={[setPhotos, setLoading, setError]} />
+      {isError ? (
+        <ErrorMessage errorText={error} />
+      ) : (
+        <ImageGallery photosArray={photos} />
+      )}
       <Hearts
         height="180"
         width="180"
@@ -37,13 +45,13 @@ function App() {
         visible={loading}
       />
 
-      <ImageModal
-      // isOpen={modalIsOpen}
-      // onOpen={setModalIsOpen}
-      // onAfterOpen={afterOpenModal}
-      // onRequestClose={closeModal}
-      // contentLabel="Example Modal"
-      />
+      {/* <ImageModal
+      isOpen={modalIsOpen}
+      onOpen={setModalIsOpen}
+      onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      contentLabel="Example Modal"
+      /> */}
     </div>
   );
 }

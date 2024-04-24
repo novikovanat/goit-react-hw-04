@@ -1,7 +1,9 @@
 // import css from "./SearchBar.module.css";
 import fetchPhotos from "../JS/fetchPhotos";
 
-export default function SearchBar({ setsState: [setPhotos, setLoading] }) {
+export default function SearchBar({
+  setsState: [setPhotos, setLoading, setError],
+}) {
   async function handleSubmit(event) {
     event.preventDefault();
     const searchPrase = event.target.elements.search.value;
@@ -12,11 +14,12 @@ export default function SearchBar({ setsState: [setPhotos, setLoading] }) {
     try {
       setLoading(true);
       setPhotos([]);
+      setError("");
       const photosArray = await fetchPhotos(searchPrase);
       const { total, total_pages, results } = photosArray;
       setPhotos(results);
     } catch (error) {
-      alert(error);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
