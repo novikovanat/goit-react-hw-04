@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Hearts } from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
@@ -26,6 +27,16 @@ function App() {
     <div>
       <SearchBar setsState={[setPhotos, setLoading]} />
       <ImageGallery photosArray={photos} />
+      <Hearts
+        height="180"
+        width="180"
+        color="pink"
+        ariaLabel="hearts-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={loading}
+      />
+
       <ImageModal
       // isOpen={modalIsOpen}
       // onOpen={setModalIsOpen}
