@@ -8,4 +8,3 @@ export default function ImageCard({ src, alt, isSmall }) {
     </div>
   );
 }
-

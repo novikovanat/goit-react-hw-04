@@ -47,7 +47,7 @@ export default function ImageModal({ src, alt, fullSize }) {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{alt}</h2>
         <button onClick={closeModal}>close</button>
         <div>
           <ImageCard src={fullSize} alt={alt} isSmall={false} />
