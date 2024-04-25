@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Hearts } from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
-import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import "./App.css";
 
 function App() {
@@ -25,12 +25,10 @@ function App() {
   //   setIsOpen(false);
   // }
 
-  const isError = error !== "";
-
   return (
     <div>
       <SearchBar setsState={[setPhotos, setLoading, setError]} />
-      {isError ? (
+      {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
         <ImageGallery photosArray={photos} />
@@ -40,18 +38,11 @@ function App() {
         width="180"
         color="pink"
         ariaLabel="hearts-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
+        // wrapperStyle={{}}
+        // wrapperClass=""
         visible={loading}
       />
-
-      {/* <ImageModal
-      isOpen={modalIsOpen}
-      onOpen={setModalIsOpen}
-      onAfterOpen={afterOpenModal}
-      onRequestClose={closeModal}
-      contentLabel="Example Modal"
-      /> */}
+      {photos.length !== 0 && <LoadMoreBtn />}
     </div>
   );
 }
