@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Hearts } from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
@@ -10,6 +10,7 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const input = useRef();
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // function openModal() {
@@ -27,7 +28,10 @@ function App() {
 
   return (
     <div>
-      <SearchBar setsState={[setPhotos, setLoading, setError]} />
+      <SearchBar
+        setsState={[setPhotos, setLoading, setError]}
+        inputRef={input}
+      />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
@@ -42,7 +46,7 @@ function App() {
         // wrapperClass=""
         visible={loading}
       />
-      {photos.length !== 0 && <LoadMoreBtn />}
+      {photos.length !== 0 && <LoadMoreBtn inputRef={input} />}
     </div>
   );
 }

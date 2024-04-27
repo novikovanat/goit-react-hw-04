@@ -1,11 +1,10 @@
 import ImageModal from "../ImageModal/ImageModal";
 
 export default function ImageGallery({ photosArray }) {
-  console.log(photosArray);
   const imageList = photosArray.map(
-    ({ urls: { thumb, regular }, alt_description, id }) => (
+    ({ urls: { small, raw }, alt_description, id }) => (
       <li key={id}>
-        <ImageModal src={thumb} alt={alt_description} fullSize={regular} />
+        <ImageModal src={small} alt={alt_description} fullSize={raw} />
       </li>
     )
   );

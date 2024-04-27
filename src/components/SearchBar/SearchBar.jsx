@@ -1,12 +1,16 @@
 // import css from "./SearchBar.module.css";
+
 import fetchPhotos from "../JS/fetchPhotos";
 
 export default function SearchBar({
-  setsState: [setPhotos, setLoading, setError],
-}) {
+  setsState: [setPhotos, setLoading, setError], inputRef
+} ) {
+  
+  
   async function handleSubmit(event) {
     event.preventDefault();
     const searchPrase = event.target.elements.search.value;
+
     if (searchPrase.trim() === "") {
       alert("Please enter search term!");
       return;
@@ -24,12 +28,12 @@ export default function SearchBar({
       setLoading(false);
     }
 
-    event.target.reset();
   }
   return (
     <header>
       <form onSubmit={handleSubmit}>
         <input
+          ref={inputRef}
           name="search"
           type="text"
           autoComplete="off"
