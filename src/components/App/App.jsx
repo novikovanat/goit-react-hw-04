@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Hearts } from "react-loader-spinner";
+import fetchPhotos from "../JS/fetchPhotos";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -10,28 +11,36 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+
   const input = useRef();
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
+  useEffect(() => {
+    search(page);
+  }, [page]);
 
-  // function afterOpenModal() {
-  // references are now sync'd and can be accessed.
-  // subtitle.style.color = "#f00";
-  // }
-
-  // function closeModal() {
-  //   setIsOpen(false);
-  // }
+  async function search(page) {
+    if (input.current.value.trim() == "") {
+      alert("Please enter search term!");
+      return;
+    }
+    try {
+      setLoading(true);
+      setPhotos([]);
+      setError("");
+      const photosArray = await fetchPhotos(input.current.value, page);
+      const { total, total_pages, results } = photosArray;
+      setPhotos(results);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div>
-      <SearchBar
-        setsState={[setPhotos, setLoading, setError]}
-        inputRef={input}
-      />
+      <SearchBar onSearch={search} inputRef={input} />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
@@ -46,7 +55,9 @@ function App() {
         // wrapperClass=""
         visible={loading}
       />
-      {photos.length !== 0 && <LoadMoreBtn inputRef={input} />}
+      {photos.length !== 0 && (
+        <LoadMoreBtn onLoad={search} page={page} setPage={setPage} />
+      )}
     </div>
   );
 }

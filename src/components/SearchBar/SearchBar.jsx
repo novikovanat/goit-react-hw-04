@@ -1,37 +1,14 @@
 // import css from "./SearchBar.module.css";
 
-import fetchPhotos from "../JS/fetchPhotos";
-
-export default function SearchBar({
-  setsState: [setPhotos, setLoading, setError], inputRef
-} ) {
-  
-  
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const searchPrase = event.target.elements.search.value;
-
-    if (searchPrase.trim() === "") {
-      alert("Please enter search term!");
-      return;
-    }
-    try {
-      setLoading(true);
-      setPhotos([]);
-      setError("");
-      const photosArray = await fetchPhotos(searchPrase);
-      const { total, total_pages, results } = photosArray;
-      setPhotos(results);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-
-  }
+export default function SearchBar({ onSearch, inputRef }) {
   return (
     <header>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onSearch();
+        }}
+      >
         <input
           ref={inputRef}
           name="search"

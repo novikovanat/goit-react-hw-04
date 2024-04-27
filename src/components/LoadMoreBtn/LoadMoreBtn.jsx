@@ -1,14 +1,10 @@
 import { useState } from "react";
 
-export default function LoadMoreBtn({ onFetch, searchPrase, inputRef }) {
-  const [clicks, setClicks] = useState(1);
-
+export default function LoadMoreBtn({ onLoad, page, setPage }) {
   const handleLoad = () => {
-    setClicks(clicks + 1);
-    onFetch(searchPrase);
+    setPage((page) => page + 1);
+    onLoad()
   };
 
-  return (
-    <button onClick={() => console.log(inputRef.current.value)}>Load More</button>
-  );
+  return <button onClick={() => handleLoad()}>Load More</button>;
 }
