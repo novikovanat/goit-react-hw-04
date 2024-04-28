@@ -1,4 +1,5 @@
 import ImageModal from "../ImageModal/ImageModal";
+import css from "./ImageGallery.module.css"
 
 export default function ImageGallery({ photosArray: { results } }) {
   const imageList = results.map(
@@ -8,5 +9,5 @@ export default function ImageGallery({ photosArray: { results } }) {
       </li>
     )
   );
-  return <ul>{imageList}</ul>;
+  return <ul className={css.flex}>{imageList}</ul>;
 }
