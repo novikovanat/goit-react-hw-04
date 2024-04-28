@@ -1,8 +1,13 @@
 // import css from "./SearchBar.module.css";
 
-export default function SearchBar({ onSearch, onTerm }) {
-  const submitHandler = (event) => {
+export default function SearchBar({ onSearch, onTerm, onReset }) {
+  function submitHandler(event) {
     event.preventDefault();
+    onReset({
+      total: 0,
+      total_pages: 0,
+      results: [],
+    });
     let input = event.currentTarget.elements.search.value.trim();
     if (input == "") {
       alert("Please enter search term!");
@@ -11,7 +16,7 @@ export default function SearchBar({ onSearch, onTerm }) {
     onTerm(input);
     onSearch(input);
     event.currentTarget.reset();
-  };
+  }
 
   return (
     <header>

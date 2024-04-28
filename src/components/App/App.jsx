@@ -28,7 +28,6 @@ function App() {
       const photosArray = await fetchPhotos(searchTerm, page);
       const { total, total_pages, results } = photosArray;
       setPhotos({
-        ...photos,
         total,
         total_pages,
         results: [...photos.results.concat(results)],
@@ -43,7 +42,7 @@ function App() {
   console.log("typeof(photos)", typeof photos);
   return (
     <div>
-      <SearchBar onTerm={setSearchTerm} onSearch={search} />
+      <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPhotos} />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
