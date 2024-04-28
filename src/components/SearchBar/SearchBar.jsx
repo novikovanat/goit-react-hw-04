@@ -1,4 +1,5 @@
 // import css from "./SearchBar.module.css";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function SearchBar({ onSearch, onTerm, onReset }) {
   function submitHandler(event) {
@@ -6,7 +7,7 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
 
     let input = event.currentTarget.elements.search.value.trim();
     if (input == "") {
-      alert("Please enter search term!");
+     toast("Please enter search term!");
       return;
     }
     onTerm(input);
@@ -24,6 +25,7 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
           autoFocus
           placeholder="Search images and photos"
         />
+        <Toaster/>
         <button
           type="submit"
           onClick={() =>
