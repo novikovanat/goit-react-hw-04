@@ -19,8 +19,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const buttonShown = page < photos.total_pages;
 
-  console.log("photos:", photos, "search term:", searchTerm, "page:", page);
-
   const search = async (searchTerm, page) => {
     try {
       setLoading(true);
@@ -32,14 +30,12 @@ function App() {
         total_pages,
         results: [...photos.results.concat(results)],
       });
-      // console.log("photosArray search:", typeof(photos));
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
-  console.log("typeof(photos)", typeof photos);
   return (
     <div>
       <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPhotos} />
@@ -53,8 +49,6 @@ function App() {
         width="180"
         color="pink"
         ariaLabel="hearts-loading"
-        // wrapperStyle={{}}
-        // wrapperClass=""
         visible={loading}
       />
       {buttonShown && (
