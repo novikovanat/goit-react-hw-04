@@ -5,9 +5,9 @@ export default function ImageGallery({ photosArray: { results } }) {
     return;
   }
   const imageList = results.map(
-    ({ urls: { small, raw }, alt_description, id }) => (
+    ({ urls: { small, regular }, alt_description, id }) => (
       <li key={id}>
-        <ImageModal src={small} alt={alt_description} fullSize={raw} />
+        <ImageModal src={small} alt={alt_description} fullSize={regular} />
       </li>
     )
   );

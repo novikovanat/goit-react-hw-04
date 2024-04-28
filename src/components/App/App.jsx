@@ -37,6 +37,8 @@ function App() {
       setLoading(false);
     }
   }
+  console.log(photos);
+  const buttonShown = photos.length !== 0 && page < photos.total_pages;
 
   return (
     <div>
@@ -55,7 +57,7 @@ function App() {
         // wrapperClass=""
         visible={loading}
       />
-      {photos.length !== 0 && (
+      {buttonShown && (
         <LoadMoreBtn onLoad={search} page={page} setPage={setPage} />
       )}
     </div>

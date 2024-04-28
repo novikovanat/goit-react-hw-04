@@ -6,6 +6,7 @@ export default function SearchBar({ onSearch, inputRef }) {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          
           onSearch();
         }}
       >
