@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Hearts } from "react-loader-spinner";
 import fetchPhotos from "../JS/fetchPhotos";
 import SearchBar from "../SearchBar/SearchBar";
@@ -12,37 +12,27 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const buttonShown = photos.length !== 0 && page < photos.total_pages;
 
-  const input = useRef();
+  console.log("photos:", photos, "search term:", searchTerm, "page:", page);
 
-  useEffect(() => {
-    search(page);
-  }, [page]);
-
-  async function search(page) {
-    if (input.current.value.trim() == "") {
-      alert("Please enter search term!");
-      return;
-    }
+  const search = async (searchTerm, page) => {
     try {
       setLoading(true);
-      setPhotos([]);
       setError("");
-      const photosArray = await fetchPhotos(input.current.value, page);
-      // const { total, total_pages, results } = photosArray;
+      const photosArray = await fetchPhotos(searchTerm, page);
       setPhotos(photosArray);
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
-  }
-  console.log(photos);
-  const buttonShown = photos.length !== 0 && page < photos.total_pages;
+  };
 
   return (
     <div>
-      <SearchBar onSearch={search} inputRef={input} />
+      <SearchBar onTerm={setSearchTerm} onSearch={search} />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
@@ -58,7 +48,12 @@ function App() {
         visible={loading}
       />
       {buttonShown && (
-        <LoadMoreBtn onLoad={search} page={page} setPage={setPage} />
+        <LoadMoreBtn
+          onUpdate={search}
+          setPage={setPage}
+          page={page}
+          searchTerm={searchTerm}
+        />
       )}
     </div>
   );
