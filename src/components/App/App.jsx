@@ -6,6 +6,7 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import "./App.css";
+import toast from "react-hot-toast";
 
 function App() {
   const [photos, setPhotos] = useState({
@@ -25,6 +26,10 @@ function App() {
       setError("");
       const photosArray = await fetchPhotos(searchTerm, page);
       const { total, total_pages, results } = photosArray;
+      if (results.length == 0) {
+        toast(`We couldn't find anything like ${searchTerm}`);
+        return;
+      }
       setPhotos({
         total,
         total_pages,
