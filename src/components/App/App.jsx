@@ -8,12 +8,16 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import "./App.css";
 
 function App() {
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState({
+    total: 0,
+    total_pages: 0,
+    results: [],
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const buttonShown = photos.length !== 0 && page < photos.total_pages;
+  const buttonShown = page < photos.total_pages;
 
   console.log("photos:", photos, "search term:", searchTerm, "page:", page);
 
@@ -22,14 +26,21 @@ function App() {
       setLoading(true);
       setError("");
       const photosArray = await fetchPhotos(searchTerm, page);
-      setPhotos(photosArray);
+      const { total, total_pages, results } = photosArray;
+      setPhotos({
+        ...photos,
+        total,
+        total_pages,
+        results: [...photos.results.concat(results)],
+      });
+      // console.log("photosArray search:", typeof(photos));
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
-
+  console.log("typeof(photos)", typeof photos);
   return (
     <div>
       <SearchBar onTerm={setSearchTerm} onSearch={search} />
