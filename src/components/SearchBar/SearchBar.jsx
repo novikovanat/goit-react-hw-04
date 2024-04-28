@@ -3,11 +3,7 @@
 export default function SearchBar({ onSearch, onTerm, onReset }) {
   function submitHandler(event) {
     event.preventDefault();
-    onReset({
-      total: 0,
-      total_pages: 0,
-      results: [],
-    });
+
     let input = event.currentTarget.elements.search.value.trim();
     if (input == "") {
       alert("Please enter search term!");
@@ -28,7 +24,18 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
           autoFocus
           placeholder="Search images and photos"
         />
-        <button type="submit">Search</button>
+        <button
+          type="submit"
+          onClick={() =>
+            onReset({
+              total: 0,
+              total_pages: 0,
+              results: [],
+            })
+          }
+        >
+          Search
+        </button>
       </form>
     </header>
   );
