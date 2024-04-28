@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function LoadMoreBtn({ onLoad, page, setPage }) {
+export default function LoadMoreBtn({ onLoad, setPage }) {
   const handleLoad = () => {
     setPage((page) => page + 1);
     onLoad()

@@ -29,8 +29,8 @@ function App() {
       setPhotos([]);
       setError("");
       const photosArray = await fetchPhotos(input.current.value, page);
-      const { total, total_pages, results } = photosArray;
-      setPhotos(results);
+      // const { total, total_pages, results } = photosArray;
+      setPhotos(photosArray);
     } catch (error) {
       setError(error.message);
     } finally {
