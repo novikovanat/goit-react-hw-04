@@ -9,6 +9,7 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
       toast("Please enter search term!");
       return;
     }
+
     onTerm(input);
     onSearch(input);
     event.currentTarget.reset();

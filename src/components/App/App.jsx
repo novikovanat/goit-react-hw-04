@@ -18,7 +18,8 @@ function App() {
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const buttonShown = page < photos.total_pages;
+
+  
 
   const search = async (searchTerm, page) => {
     try {
@@ -56,7 +57,7 @@ function App() {
         ariaLabel="hearts-loading"
         visible={loading}
       />
-      {buttonShown && (
+      {page < photos.total_pages && (
         <LoadMoreBtn
           onUpdate={search}
           setPage={setPage}
