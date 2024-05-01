@@ -1,6 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
 
-export default function SearchBar({ onSearch, onTerm, onReset }) {
+export default function SearchBar({ onTerm, onReset }) {
   function submitHandler(event) {
     event.preventDefault();
 
@@ -11,6 +11,7 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
     }
 
     onTerm(input);
+    onReset(1);
     event.currentTarget.reset();
   }
 
@@ -25,18 +26,7 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
           placeholder="Search images and photos"
         />
         <Toaster />
-        <button
-          type="submit"
-          onClick={() =>
-            onReset({
-              total: 0,
-              total_pages: 0,
-              results: [],
-            })
-          }
-        >
-          Search
-        </button>
+        <button>Search</button>
       </form>
     </header>
   );

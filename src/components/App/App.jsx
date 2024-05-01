@@ -50,12 +50,13 @@ function App() {
       setLoading(false);
     }
   };
+  console.log("response", response, "page:", page);
   return (
     <div>
       <SearchBar
         onTerm={setSearchTerm}
         onSearch={search}
-        onReset={setResponse}
+        onReset={setPage}
       />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
