@@ -11,7 +11,6 @@ export default function SearchBar({ onSearch, onTerm, onReset }) {
     }
 
     onTerm(input);
-    onSearch(input);
     event.currentTarget.reset();
   }
 

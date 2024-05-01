@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Hearts } from "react-loader-spinner";
 import fetchPhotos from "../JS/fetchPhotos";
 import SearchBar from "../SearchBar/SearchBar";
@@ -9,7 +9,7 @@ import "./App.css";
 import toast from "react-hot-toast";
 
 function App() {
-  const [photos, setPhotos] = useState({
+  const [response, setResponse] = useState({
     total: 0,
     total_pages: 0,
     results: [],
@@ -19,23 +19,31 @@ function App() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
-  
+  useEffect(() => {
+    if (searchTerm === "") {
+      return;
+    }
+    search(searchTerm, page);
+  }, [searchTerm, page]);
 
   const search = async (searchTerm, page) => {
     try {
       setLoading(true);
       setError("");
       const photosArray = await fetchPhotos(searchTerm, page);
-      const { total, total_pages, results } = photosArray;
+      const { results } = photosArray;
       if (results.length == 0) {
         toast(`We couldn't find anything like ${searchTerm}`);
         return;
       }
-      setPhotos({
-        total,
-        total_pages,
-        results: [...photos.results.concat(results)],
-      });
+      if (page > 1) {
+        setResponse((prevResponse) => {
+          const { results: prevResults } = prevResponse;
+          return { ...prevResponse, results: results.concat(prevResults) };
+        });
+      } else {
+        setResponse(photosArray);
+      }
     } catch (error) {
       setError(error.message);
     } finally {
@@ -44,11 +52,15 @@ function App() {
   };
   return (
     <div>
-      <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPhotos} />
+      <SearchBar
+        onTerm={setSearchTerm}
+        onSearch={search}
+        onReset={setResponse}
+      />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
-        <ImageGallery photosArray={photos} />
+        <ImageGallery photosArray={response} />
       )}
       <Hearts
         height="180"
@@ -57,7 +69,7 @@ function App() {
         ariaLabel="hearts-loading"
         visible={loading}
       />
-      {page < photos.total_pages && (
+      {page < response.total_pages && (
         <LoadMoreBtn
           onUpdate={search}
           setPage={setPage}
