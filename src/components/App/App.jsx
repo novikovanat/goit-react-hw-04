@@ -39,7 +39,7 @@ function App() {
       if (page > 1) {
         setResponse((prevResponse) => {
           const { results: prevResults } = prevResponse;
-          return { ...prevResponse, results: results.concat(prevResults) };
+          return { ...prevResponse, results: prevResults.concat(results) };
         });
       } else {
         setResponse(photosArray);
