@@ -56,18 +56,28 @@ function App() {
   console.log("response", response, "page:", page);
 
 
-
-
   return (
-    <div>
+    <>
       <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
-        <div>
-          <ImageGallery photosArray={response} onOpen={setModalIsOpen} onItem={setCurrentImage} />
-          <ImageModal onClose={setModalIsOpen} modalState={modalIsOpen} image={response.results[currentImage]}/>
-        </div>
+        <>
+          {0 < response.results.length && (
+            <ImageGallery
+              photosArray={response}
+              onOpen={setModalIsOpen}
+              onItem={setCurrentImage}
+            />
+          )}
+          {currentImage !== null && (
+            <ImageModal
+              onClose={setModalIsOpen}
+              modalState={modalIsOpen}
+              image={response.results[currentImage]}
+            />
+          )}
+        </>
       )}
 
       <Hearts
@@ -85,7 +95,7 @@ function App() {
           searchTerm={searchTerm}
         />
       )}
-    </div>
+    </>
   );
 }
 

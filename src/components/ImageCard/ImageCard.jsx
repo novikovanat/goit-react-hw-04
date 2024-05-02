@@ -1,10 +1,9 @@
 import css from "./ImageCard.module.css";
-export default function ImageCard({ src, alt, isSmall }) {
-  let selectorCss = isSmall ? css.smallImage : css.largeImage;
-
+export default function ImageCard({ small, alt }) {
   return (
-    <>
-      <img className={selectorCss} src={src} alt={alt} />
-    </>
+    <div>
+      <img src={small} alt={alt} />
+    </div>
   );
 }
+

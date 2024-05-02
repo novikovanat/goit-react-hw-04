@@ -1,7 +1,14 @@
 import Modal from "react-modal";
+import css from "./ImageModal.module.css";
 
-export default function ImageModal({onClose, modalState, image }) {
-  console.log(image)
+export default function ImageModal({ onClose, modalState, image }) {
+  const {
+    description,
+    alt_description,
+    urls: { regular },
+    user: { name, instagram_username },
+  } = image;
+
   Modal.setAppElement("#root");
   const customStyles = {
     content: {
@@ -16,8 +23,6 @@ export default function ImageModal({onClose, modalState, image }) {
   function closeModal() {
     onClose(false);
   }
-  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-  // Modal.setAppElement("#root");
 
   let subtitle;
 
@@ -29,15 +34,27 @@ export default function ImageModal({onClose, modalState, image }) {
   return (
     <div>
       <Modal
+        className={css.modal}
         isOpen={modalState}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        // style={customStyles}
         contentLabel="Image Modal"
       >
-        <div>
+        <div className={css.div}>
           <button onClick={closeModal}>close</button>
-          <img src="https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2022/05/cats-party-0516221.jpg"></img>
+          <img
+            className={css.largeImage}
+            src={regular}
+            alt={alt_description}
+          ></img>
+          <div>
+            <p>
+              Author: <span>{name}</span>
+            </p>
+            <a href="">{instagram_username}</a>
+          </div>
+          <p>{description === null ? alt_description : description}</p>
         </div>
       </Modal>
     </div>

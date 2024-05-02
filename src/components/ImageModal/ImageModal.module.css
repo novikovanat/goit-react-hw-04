@@ -1,0 +1,20 @@
+.modal {
+  position: relative;
+  background-color: black;
+  /* top: 50%;
+  left: 50%; */
+  /* right: "auto";
+  bottom: "auto"; */
+  /* margin: auto 0; */
+  /* transform: translate(-50%, -50%); */
+  height: 80vh;
+}
+.largeImage {
+  max-height: 80vh;
+  margin: auto;
+}
+
+/* .div{
+    max-height: 80vh;
+    max-width: 80vh;
+} */
