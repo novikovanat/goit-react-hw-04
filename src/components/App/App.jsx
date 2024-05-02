@@ -5,6 +5,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "../ImageModal/ImageModal";
 import "./App.css";
 import toast from "react-hot-toast";
 
@@ -18,6 +19,8 @@ function App() {
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentImage, setCurrentImage]= useState(null)
 
   useEffect(() => {
     if (searchTerm === "") {
@@ -53,15 +56,14 @@ function App() {
   console.log("response", response, "page:", page);
   return (
     <div>
-      <SearchBar
-        onTerm={setSearchTerm}
-        onSearch={search}
-        onReset={setPage}
-      />
+      <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
-        <ImageGallery photosArray={response} />
+        <div>
+          <ImageGallery photosArray={response} onOpen={setModalIsOpen} onItem={setCurrentImage} />
+          <ImageModal onClose={setModalIsOpen} modalState={modalIsOpen} response={response}/>
+        </div>
       )}
       <Hearts
         height="180"

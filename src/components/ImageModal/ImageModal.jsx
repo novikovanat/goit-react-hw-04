@@ -1,8 +1,8 @@
-import React from "react";
 import Modal from "react-modal";
-import ImageCard from "../ImageCard/ImageCard";
 
-export default function ImageModal({ src, alt, fullSize }) {
+export default function ImageModal({onClose, modalState, response }) {
+  const{results} = response
+  console.log(results)
   Modal.setAppElement("#root");
   const customStyles = {
     content: {
@@ -14,42 +14,31 @@ export default function ImageModal({ src, alt, fullSize }) {
       transform: "translate(-50%, -50%)",
     },
   };
-
+  function closeModal() {
+    onClose(false);
+  }
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
   // Modal.setAppElement("#root");
 
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     subtitle.style.color = "#f00";
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <div>
-      <div onClick={openModal}>
-        <ImageCard src={src} alt={alt} isSmall={true} />
-      </div>
       <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        isOpen={modalState}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Image Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{alt}</h2>
-        <button onClick={closeModal}>close</button>
         <div>
-          <ImageCard src={fullSize} alt={alt} isSmall={false} />
+          <button onClick={closeModal}>close</button>
+          <img src="https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2022/05/cats-party-0516221.jpg"></img>
         </div>
       </Modal>
     </div>

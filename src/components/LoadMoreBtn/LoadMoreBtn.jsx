@@ -1,4 +1,4 @@
-export default function LoadMoreBtn({ setPage, onUpdate, searchTerm, page }) {
+export default function LoadMoreBtn({ setPage, page }) {
   const handleLoad = () => {
     setPage(()=>page + 1);
   };
