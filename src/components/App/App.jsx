@@ -54,6 +54,10 @@ function App() {
     }
   };
   console.log("response", response, "page:", page);
+
+
+
+
   return (
     <div>
       <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />
@@ -62,9 +66,10 @@ function App() {
       ) : (
         <div>
           <ImageGallery photosArray={response} onOpen={setModalIsOpen} onItem={setCurrentImage} />
-          <ImageModal onClose={setModalIsOpen} modalState={modalIsOpen} response={response}/>
+          <ImageModal onClose={setModalIsOpen} modalState={modalIsOpen} image={response.results[currentImage]}/>
         </div>
       )}
+
       <Hearts
         height="180"
         width="180"

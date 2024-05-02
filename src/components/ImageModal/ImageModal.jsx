@@ -1,8 +1,7 @@
 import Modal from "react-modal";
 
-export default function ImageModal({onClose, modalState, response }) {
-  const{results} = response
-  console.log(results)
+export default function ImageModal({onClose, modalState, image }) {
+  console.log(image)
   Modal.setAppElement("#root");
   const customStyles = {
     content: {
