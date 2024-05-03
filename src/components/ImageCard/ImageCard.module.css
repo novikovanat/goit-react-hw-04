@@ -2,6 +2,12 @@
   height: 80vh;
 }
 
+/* .imageBox {
+  display: grid;
+} */
+
 .smallImage {
-  height: 200px;
+ height: 100%;
+ object-fit: cover;
+  /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
 }

@@ -1,4 +1,21 @@
-.flex{
+.flex {
     display: flex;
     flex-wrap: wrap;
+}
+
+.imageItem {
+  
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.25rem;
+ 
+   
+}
+
+.imageItem:nth-child(4) {
+    grid-column: 1/2 span 2;
+   
 }

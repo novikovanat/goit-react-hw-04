@@ -38,6 +38,7 @@ export default function ImageModal({ onClose, modalState, image }) {
         isOpen={modalState}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
+
         // style={customStyles}
         contentLabel="Image Modal"
       >

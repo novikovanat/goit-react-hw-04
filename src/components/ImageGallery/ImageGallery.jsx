@@ -8,7 +8,7 @@ export default function ImageGallery({
 }) {
   const imageList = results.map(
     ({ urls: { small }, alt_description, id }, index) => (
-      <li
+      <li className={css.imageItem}
         key={id}
         onClick={() => {
           onOpen(true);
@@ -19,5 +19,5 @@ export default function ImageGallery({
       </li>
     )
   );
-  return <ul className={css.flex}>{imageList}</ul>;
+  return <ul className={css.gallery}>{imageList}</ul>;
 }
