@@ -5,17 +5,19 @@
 
 .imageItem {
   grid-column: span 2;
+  border-radius: 10px;
 }
 
 .gallery {
     display: grid;
     grid-template-columns: repeat(6, 150px);
+    grid-template-rows: repeat(3, 150px);
+
     gap: 0.25rem;
  
    
 }
 
 .imageItem:nth-child(4) {
-    grid-column: 1/2 span 2;
-   
+    grid-column: 2/span 2;
 }
