@@ -3,17 +3,26 @@
   flex-wrap: wrap;
 }
 
+.gallery {
+  display: grid;
+  place-items: start center;
+  grid-template-columns: repeat(6, 150px);
+  grid-template-rows: repeat(4, 150px);
+  gap: 0.5rem;
+}
+.gallery:hover > li.imageItem {
+  filter: brightness(0.5);
+}
+
+.gallery>li.imageItem:hover {
+  filter: brightness(1) saturate(1.1)
+}
 .imageItem {
   grid-column: span 2;
   border-radius: 10px;
 }
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(6, 150px);
-  grid-template-rows: repeat(3, 150px);
-
-  gap: 0.5rem;
+.imageItem:hover {
+  z-index: 1;
 }
 
 .imageItem:nth-child(4) {

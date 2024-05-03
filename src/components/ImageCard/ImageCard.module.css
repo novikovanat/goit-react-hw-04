@@ -12,8 +12,11 @@
   aspect-ratio: 1;
   border-radius: 10px;
   clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  /* clip-path: polygon(0% 0%, 100% 0%, 50% 100%); */
+  /* clip-path: xywh(0 5px 100% 75% round 15% 0); */
+  transition: clip-path 
 }
 
 .smallImage:hover {
-  clip-path: polygon(-100% 100%, 100% 100%, 100% 100%, 100% -100%);
+  clip-path: xywh(0 5px 100% 100% round 10px);
 }
