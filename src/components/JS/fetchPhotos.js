@@ -9,7 +9,7 @@ export default async function fetchPhotos(searchTerm, page) {
     params: {
       auto: "format",
       page: page,
-      per_page: 8,
+      per_page: 24,
       query: searchTerm,
     },
   });
