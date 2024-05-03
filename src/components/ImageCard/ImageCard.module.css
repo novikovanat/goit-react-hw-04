@@ -11,5 +11,9 @@
   object-fit: cover;
   aspect-ratio: 1;
   border-radius: 10px;
-  clip-path:polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.smallImage:hover {
+  clip-path: polygon(-100% 100%, 100% 100%, 100% 100%, 100% -100%);
 }
