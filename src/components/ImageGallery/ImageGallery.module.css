@@ -4,12 +4,12 @@
 }
 
 .imageItem {
-  
+  grid-column: span 2;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 150px);
     gap: 0.25rem;
  
    
