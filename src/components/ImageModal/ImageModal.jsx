@@ -1,7 +1,6 @@
 import Modal from "react-modal";
 import { SiInstagram } from "react-icons/si";
 import { RiCloseLargeLine } from "react-icons/ri";
-
 import css from "./ImageModal.module.css";
 
 export default function ImageModal({ onClose, modalState, image }) {
@@ -27,14 +26,13 @@ export default function ImageModal({ onClose, modalState, image }) {
       <Modal
         className={css.photoOpen}
         isOpen={modalState}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={styles}
         contentLabel="Image Modal"
       >
         <div className={css.div}>
-          <button onClick={closeModal}>
-            <RiCloseLargeLine />
+          <button onClick={closeModal} className={css.closeButton}>
+            <RiCloseLargeLine className={css.cross}/>
           </button>
 
           <img
