@@ -14,17 +14,17 @@ export default function ImageModal({ onClose, modalState, image }) {
 
   Modal.setAppElement("#root");
 
-  const styles ={
-    base: 'fade'
-  }
+  const styles = {
+    base: "fade",
+  };
 
   function closeModal() {
     onClose(false);
   }
-  let link = `https://www.instagram.com/${instagram_username}`
+  let link = `https://www.instagram.com/${instagram_username}`;
   return (
     <>
-      <Modal 
+      <Modal
         className={css.photoOpen}
         isOpen={modalState}
         // onAfterOpen={afterOpenModal}
@@ -33,17 +33,24 @@ export default function ImageModal({ onClose, modalState, image }) {
         contentLabel="Image Modal"
       >
         <div className={css.div}>
-          <button onClick={closeModal}><RiCloseLargeLine /></button>
+          <button onClick={closeModal}>
+            <RiCloseLargeLine />
+          </button>
           <img
             className={css.largeImage}
             src={regular}
             alt={alt_description}
           ></img>
           <div>
-            <p>
-              Author: <span>{name}</span>
+            <p className={css.author}>
+              {instagram_username !== null && (
+                <a href={link}>
+                  <SiInstagram />
+                </a>
+              )}
+              Author:
+              <span>{name}</span>
             </p>
-            <a href={link}><SiInstagram /></a>
           </div>
           <p>{description === null ? alt_description : description}</p>
         </div>
