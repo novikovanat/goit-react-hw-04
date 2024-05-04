@@ -1,7 +1,7 @@
-.flex {
+/* .flex {
   display: flex;
-  flex-wrap: wrap;
-}
+  margin: auto;
+} */
 
 .gallery {
   display: grid;
@@ -28,3 +28,5 @@
 .imageItem:nth-child(7n-6) {
   grid-column: 2 / span 2;
 }
+
+
