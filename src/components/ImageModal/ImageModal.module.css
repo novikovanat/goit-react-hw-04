@@ -45,3 +45,7 @@
   margin-right: 12px;
   width: 30px;
 }
+.social:hover{
+  filter: drop-shadow(6px 6px 13px #646cffaa);
+}
+
