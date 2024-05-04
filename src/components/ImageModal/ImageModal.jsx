@@ -9,7 +9,7 @@ export default function ImageModal({ onClose, modalState, image }) {
     description,
     alt_description,
     urls: { regular },
-    user: { name, instagram_username },
+    user: { first_name, last_name, instagram_username },
   } = image;
 
   Modal.setAppElement("#root");
@@ -36,23 +36,29 @@ export default function ImageModal({ onClose, modalState, image }) {
           <button onClick={closeModal}>
             <RiCloseLargeLine />
           </button>
+
           <img
             className={css.largeImage}
             src={regular}
             alt={alt_description}
           ></img>
-          <div>
-            <p className={css.author}>
+          <div className={css.textDiv}>
+            <div className={css.flex}>
               {instagram_username !== null && (
-                <a href={link}>
-                  <SiInstagram />
+                <a href={link} rel="noopener noreferer">
+                  <SiInstagram className={css.social} />
                 </a>
               )}
-              Author:
-              <span>{name}</span>
+              <p className={css.flex}>
+                Author:
+                <p className={css.author}>{first_name}</p>{" "}
+                <p className={css.author}>{last_name}</p>
+              </p>
+            </div>
+            <p className={css.description}>
+              {description === null ? alt_description : description}
             </p>
           </div>
-          <p>{description === null ? alt_description : description}</p>
         </div>
       </Modal>
     </>

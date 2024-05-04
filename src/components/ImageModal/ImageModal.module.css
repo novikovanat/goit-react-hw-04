@@ -1,14 +1,47 @@
 .largeImage {
-  max-height: 80vh;
+  max-height: 85vh;
   margin: auto;
 }
 
 .photoOpen {
   background-color: var(--background-color);
   max-width: 1280px;
-  max-height: 90vh;
+  max-height: 98vh;
   margin: 30px auto 0 auto;
   border-radius: 3px;
   filter: drop-shadow(0 0 2em #646cffaa);
   border: none;
+}
+
+.author {
+  font-weight: 600;
+  padding-left: 10px;
+}
+.author::first-letter {
+  text-decoration: capitalize;
+}
+
+.textDiv {
+  max-width: 1000px;
+  font-size: 22px;
+  line-height: 2;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.description {
+  text-align: left;
+  line-height: 1;
+  margin-left: 40px;
+}
+
+.description::first-letter {
+  text-transform: capitalize;
+}
+.flex {
+  display: flex;
+}
+.social {
+  margin-right: 12px;
+  width: 30px;
 }
