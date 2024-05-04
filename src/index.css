@@ -60,7 +60,7 @@ a:hover {
 
 body {
   margin: 0;
- 
+
   min-width: 320px;
   min-height: 100vh;
 }
@@ -80,7 +80,6 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-  
 }
 
 button:hover,

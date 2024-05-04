@@ -1,4 +1,7 @@
 import Modal from "react-modal";
+import { SiInstagram } from "react-icons/si";
+import { RiCloseLargeLine } from "react-icons/ri";
+
 import css from "./ImageModal.module.css";
 
 export default function ImageModal({ onClose, modalState, image }) {
@@ -10,40 +13,27 @@ export default function ImageModal({ onClose, modalState, image }) {
   } = image;
 
   Modal.setAppElement("#root");
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      // marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
-  };
+
+  const styles ={
+    base: 'fade'
+  }
+
   function closeModal() {
     onClose(false);
   }
-
-  let subtitle;
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
-  }
-
+  let link = `https://www.instagram.com/${instagram_username}`
   return (
-    <div>
-      <Modal
-        className={css.modal}
+    <>
+      <Modal 
+        className={css.photoOpen}
         isOpen={modalState}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-
-        // style={customStyles}
+        style={styles}
         contentLabel="Image Modal"
       >
         <div className={css.div}>
-          <button onClick={closeModal}>close</button>
+          <button onClick={closeModal}><RiCloseLargeLine /></button>
           <img
             className={css.largeImage}
             src={regular}
@@ -53,11 +43,11 @@ export default function ImageModal({ onClose, modalState, image }) {
             <p>
               Author: <span>{name}</span>
             </p>
-            <a href="">{instagram_username}</a>
+            <a href={link}><SiInstagram /></a>
           </div>
           <p>{description === null ? alt_description : description}</p>
         </div>
       </Modal>
-    </div>
+    </>
   );
 }

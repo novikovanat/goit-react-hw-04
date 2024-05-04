@@ -20,7 +20,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [currentImage, setCurrentImage]= useState(null)
+  const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
     if (searchTerm === "") {
@@ -55,7 +55,6 @@ function App() {
   };
   console.log("response", response, "page:", page);
 
-
   return (
     <>
       <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />
@@ -80,13 +79,15 @@ function App() {
         </>
       )}
 
-      <Hearts
-        height="180"
-        width="180"
-        color="pink"
-        ariaLabel="hearts-loading"
-        visible={loading}
-      />
+      {loading === true && (
+        <Hearts
+          height="180"
+          width="180"
+          color="pink"
+          ariaLabel="hearts-loading"
+          visible={loading}
+        />
+      )}
       {page < response.total_pages && (
         <LoadMoreBtn
           onUpdate={search}
