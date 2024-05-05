@@ -10,7 +10,7 @@ export default function ImageCard({ small, alt, onOpen, onItem, index }) {
         className={css.smallImage}
         src={small}
         alt={alt}
-        onClick={() => handleImageClik(index)}
+        onClick={() => handleImageClik()}
       />
     </>
   );

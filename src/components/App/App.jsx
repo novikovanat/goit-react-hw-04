@@ -57,7 +57,7 @@ function App() {
   return (
     <>
       {modalIsOpen === false && (
-        <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />
+        <SearchBar onTerm={setSearchTerm} onReset={setPage} />
       )}
       {error !== "" ? (
         <ErrorMessage errorText={error} />
