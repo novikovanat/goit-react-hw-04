@@ -1,11 +1,12 @@
 .largeImage {
-  max-height: 85vh;
+  max-height: 70vh;
   margin: auto;
 }
 
 .photoOpen {
   background-color: var(--background-color);
   max-width: 1280px;
+  max-height: 95vh;
   margin: 12px auto 12px auto;
   border-radius: 3px;
   filter: drop-shadow(0 0 2em #646cffaa);
