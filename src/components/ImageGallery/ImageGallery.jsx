@@ -8,14 +8,14 @@ export default function ImageGallery({
 }) {
   const imageList = results.map(
     ({ urls: { small }, alt_description, id }, index) => (
-      <li className={css.imageItem}
-        key={id}
-        onClick={() => {
-          onOpen(true);
-          onItem(index);
-        }}
-      >
-        <ImageCard small={small} alt={alt_description} onOpen={onOpen} />
+      <li className={css.imageItem} key={id}>
+        <ImageCard
+          small={small}
+          alt={alt_description}
+          onOpen={onOpen}
+          onItem={onItem}
+          index={index}
+        />
       </li>
     )
   );
