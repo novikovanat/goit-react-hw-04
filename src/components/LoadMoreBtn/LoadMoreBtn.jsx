@@ -1,11 +1,11 @@
 import css from "./LoadMoreBtn.module.css";
-export default function LoadMoreBtn({ setPage, page }) {
-  const handleLoad = () => {
-    setPage(() => page + 1);
+export default function LoadMoreBtn({ handleLoad, page }) {
+  const  onClick= () => {
+    handleLoad(() => page + 1);
   };
 
   return (
-    <button className={css.loadButton} onClick={() => handleLoad()}>
+    <button className={css.loadButton} onClick={() => onClick(page)}>
       Load More
     </button>
   );
