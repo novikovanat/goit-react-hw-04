@@ -43,7 +43,7 @@ export default function ImageModal({ onClose, modalState, image }) {
           <div className={css.textDiv}>
             <div className={css.flex}>
               {instagram_username !== null && (
-                <a href={link} rel="noopener noreferer">
+                <a href={link}  target="_blank"  rel="noopener noreferer">
                   <SiInstagram className={css.social} />
                 </a>
               )}
