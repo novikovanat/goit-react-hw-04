@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Hearts } from "react-loader-spinner";
 import fetchPhotos from "../JS/fetchPhotos";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../ImageModal/ImageModal";
+import Loader from "../Loader/Loader";
 import "./App.css";
 import toast from "react-hot-toast";
 
@@ -53,11 +53,12 @@ function App() {
       setLoading(false);
     }
   };
-  console.log("response", response, "page:", page);
 
   return (
     <>
-     { modalIsOpen === false && <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />}
+      {modalIsOpen === false && (
+        <SearchBar onTerm={setSearchTerm} onSearch={search} onReset={setPage} />
+      )}
       {error !== "" ? (
         <ErrorMessage errorText={error} />
       ) : (
@@ -78,20 +79,11 @@ function App() {
           )}
         </>
       )}
-
-      {loading === true && (
-        <Hearts
-          height="180"
-          width="180"
-          color="pink"
-          ariaLabel="hearts-loading"
-          visible={loading}
-        />
-      )}
+      {loading === true && <Loader isLoading={loading} />}
       {page < response.total_pages && (
         <LoadMoreBtn
           onUpdate={search}
-          setPage={setPage}
+          handleLoad={setPage}
           page={page}
           searchTerm={searchTerm}
         />
