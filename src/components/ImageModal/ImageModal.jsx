@@ -32,7 +32,7 @@ export default function ImageModal({ onClose, modalState, image }) {
       >
         <div className={css.div}>
           <button onClick={closeModal} className={css.closeButton}>
-            <RiCloseLargeLine className={css.cross}/>
+            <RiCloseLargeLine className={css.cross} />
           </button>
 
           <img
@@ -43,19 +43,21 @@ export default function ImageModal({ onClose, modalState, image }) {
           <div className={css.textDiv}>
             <div className={css.flex}>
               {instagram_username !== null && (
-                <a href={link}  target="_blank"  rel="noopener noreferer">
+                <a href={link} target="_blank" rel="noopener noreferer">
                   <SiInstagram className={css.social} />
                 </a>
               )}
-              <p className={css.flex}>
-                Author:
-                <p className={css.author}>{first_name}</p>{" "}
-                <p className={css.author}>{last_name}</p>
-              </p>
+              <div>
+                <div className={css.flex}>
+                  Author:
+                  <p className={css.author}>{first_name}</p>{" "}
+                  <p className={css.author}>{last_name}</p>
+                </div>
+                <p className={css.description}>
+                  {description === null ? alt_description : description}
+                </p>
+              </div>
             </div>
-            <p className={css.description}>
-              {description === null ? alt_description : description}
-            </p>
           </div>
         </div>
       </Modal>

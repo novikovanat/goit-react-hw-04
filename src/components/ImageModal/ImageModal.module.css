@@ -6,15 +6,13 @@
 .photoOpen {
   background-color: var(--background-color);
   max-width: 1280px;
-  max-height: 98vh;
   margin: 12px auto 12px auto;
   border-radius: 3px;
   filter: drop-shadow(0 0 2em #646cffaa);
   border: none;
   text-align: left;
   padding: 15px 0;
-  outline: 1px solid  #646cffaa;
-
+  outline: 1px solid #646cffaa;
 }
 
 .author {
@@ -36,7 +34,6 @@
 .description {
   text-align: left;
   line-height: 1;
-  margin-left: 40px;
 }
 
 .description::first-letter {
@@ -49,10 +46,10 @@
   margin-right: 12px;
   width: 30px;
 }
-.social:hover{
+.social:hover {
   filter: drop-shadow(6px 6px 13px #646cffaa);
 }
-.closeButton{
+.closeButton {
   display: block;
   width: 60px;
   height: 60px;
@@ -61,6 +58,6 @@
   margin: 0 30px 10px auto;
 }
 
-.closeButton:hover{
-    color:  #646cffaa
+.closeButton:hover {
+  color: #646cffaa;
 }
