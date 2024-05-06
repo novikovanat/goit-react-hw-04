@@ -81,12 +81,7 @@ function App() {
       )}
       {loading === true && <Loader isLoading={loading} />}
       {page < response.total_pages && (
-        <LoadMoreBtn
-          onUpdate={search}
-          handleLoad={setPage}
-          page={page}
-          searchTerm={searchTerm}
-        />
+        <LoadMoreBtn handleLoad={setPage} page={page} />
       )}
     </>
   );
